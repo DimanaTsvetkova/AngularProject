@@ -1,0 +1,11 @@
+<div class="create-post-page">
+  <div class="container-create">
+    <form [formGroup]="form" (submit)="createPost()">
+      <h1 class="create-h">Share destination</h1>
+      <input class="login" type="text"placeholder="Destination" name="destination" formControlName="destination" />
+      <input class="login" type="url"  placeholder="Picture" name="imageUrl" formControlName="imageUrl" />
+
+      <button class=" btn btn-dark login-btn share-btn" type="submit" value="Login"> Share</button>
+    </form>
+  </div>
+</div>

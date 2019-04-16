@@ -1,0 +1,29 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <a class="navbar-brand" routerLink="/post/all"><img src="../../../../assets/images/logo.svg" alt="pic" class="logo-img"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <div *ngIf="!authService.isAuthenticated()" class="row">
+          <a class="nav-btns nav-item nav-link active" routerLink="/register">Register</a>
+          <a class="nav-btns nav-item nav-link active" routerLink="/login">Login </a>
+        </div>
+        
+        <div *ngIf="authService.isAuthenticated()" class="row">
+          <a class=" nav-item nav-link active nav-btns pt-4 pr-4" routerLink="/post/all">Explore</a>
+          <a *ngIf="!authService.isAdmin()" class=" nav-item nav-link active nav-btns pt-4 pr-4" routerLink="/post/wishist/{{authService.getUserData()['userId'].toString()}}">Wishlist</a>
+
+          <a *ngIf="!authService.isAdmin()" class=" nav-item nav-link active nav-btns pt-4 pr-4" routerLink="/post/create">Post</a>
+          <a class=" nav-item nav-link active nav-btns pt-4 pr-4 logout-link" (click)="logout()">Logout</a>
+
+          <a *ngIf="!authService.isAdmin()" class=" nav-item nav-link active nav-btns" routerLink="/post/mine/{{authService.getUserData()['userId'].toString()}}"><img src="{{authService.getUserData()['imageUrl']}}" alt="user" class="profile-pic"></a>
+        </div>
+
+
+      </div>
+    </div>
+  </nav>
+</header>

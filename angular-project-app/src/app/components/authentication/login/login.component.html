@@ -1,0 +1,11 @@
+<div class="home-page">
+  <div class="cred-form">
+    <div class="container">
+      <form [formGroup]="form" (submit)="login()">
+        <h1 class="login-h">Login</h1>
+        <input  class="login" type="text"  placeholder="Username" name="username" formControlName="username"/>
+        <input class="login" type="password" placeholder="******" name="password" formControlName="password" />
+        <input class="login-btn btn btn-dark" type="submit" value="Login" />
+      </form>
+    </div>
+  </div>

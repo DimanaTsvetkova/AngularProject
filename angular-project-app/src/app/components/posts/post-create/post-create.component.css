@@ -1,0 +1,50 @@
+.container-create{
+    width: 30%;
+    background: rgba(0, 0, 0, -1);
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 25%;
+    margin-left: 7%;
+    margin-top: -10%;
+    border-radius: 25px;
+    text-shadow: 5px 2px 9px #000000;
+    box-shadow: 10px 10px 34px 0px rgba(0,0,0,0.75);
+  
+  }
+  .container-create>form{
+    text-align: center;
+      background: #ffff;
+      border-radius: 25px;
+  }
+  
+  .create-h{
+    text-shadow: none;
+    font-size: 2.5rem;
+    color: black;
+    font-weight: bold;
+    margin: 1em 0 0 0;
+    padding: 1em 0 0;
+  }
+  
+  .create-post-page{
+    height: 100%;
+    background: #000000;
+  }
+  .share-btn:hover{
+    box-shadow: none;
+    
+  }
+
+  .login{
+    width: 75%;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid black;
+    margin: 7% 10%;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+
+  }

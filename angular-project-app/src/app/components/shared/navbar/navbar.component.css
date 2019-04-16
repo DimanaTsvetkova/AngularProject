@@ -1,0 +1,64 @@
+.logo-img{
+    width: 4em;
+    vertical-align: middle;
+    border-style: none;
+    margin: 0 2em;
+  }
+
+  .login{
+    width: 75%;
+    outline: 0;
+    border: 0;
+    border-bottom: 2px solid black;
+    margin: 7% 10%;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+
+  }
+  .login-h{
+    font-size: 2.5rem;
+    color: black;
+    font-weight: bold;
+    margin: 1em 0 0 0;
+  }
+  .login-btn{
+    box-shadow: 10px 10px 44px -1px rgba(0,0,0,0.75);
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1em;
+    background: #000000;
+    transition: all 450ms ease-in-out;
+  }
+  .login-btn:hover{
+      cursor: pointer;
+    color:#000000;
+    background: #fff;
+  }
+
+  .login::placeholder{
+      text-align: center;
+    color:#000000; 
+  }
+  ::placeholder{
+      font-weight: bold;
+      color:#fff;
+  }
+ 
+ 
+  .nav-btns{
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0 2em;
+  }
+  /* LoggedInNavbar */
+.profile-pic{
+  border-radius: 50%;
+  width: 3em;
+
+  border: 2px solid;
+}
+.logout-link{
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+.my-posts-user{
+    margin: 1em 0;
+    justify-content: center
+  }
+  .my-h{
+    font-family: 'Merienda', cursive;
+    margin: 1em auto
+  }
+  .my-posts-user>img{
+    border-radius: 50%;
+    width: 100%
+  }
+  .my-posts-page{
+    justify-content: center
+  }
+ 
