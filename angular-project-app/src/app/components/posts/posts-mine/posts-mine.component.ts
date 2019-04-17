@@ -9,13 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./posts-mine.component.css']
 })
 export class PostsMineComponent implements OnInit {
-  myPosts: Array<Post>
+  myPosts: Array<Post>;
+  username: string;
   constructor(
     private postService: PostServiceService,
     private route: ActivatedRoute
     ) { }
 
   ngOnInit() {
+    this.username = localStorage.getItem('username');
     this.route.params.subscribe(data=>{
       let id = data['id']
       console.log(id)

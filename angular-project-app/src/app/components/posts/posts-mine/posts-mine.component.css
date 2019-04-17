@@ -13,4 +13,7 @@
   .my-posts-page{
     justify-content: center
   }
- 
+ .likes{
+  font-weight: bold;
+  float: left;
+ }

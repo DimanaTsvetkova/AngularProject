@@ -48,3 +48,14 @@
     background: transparent;
 
   }
+
+  .validate-txt{
+    background: red;
+    font-weight: bold;
+    font-size: 1em;
+    width: fit-content;
+    color: #ffff !important;
+    padding: 0 1em;
+    margin: 1em auto;
+
+  }

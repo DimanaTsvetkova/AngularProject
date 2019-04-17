@@ -1,10 +1,11 @@
 <div class="col my-posts-page">
   <div class="col-md-6 mt-2 text-center m-auto">
-    <h1 class="my-h">The places I've been</h1>
+    <h1 class="my-h">The places {{username}} has posted</h1>
   </div>
   <div class="col-md-5 col-sm-9 m-auto post-card text-center">
-    <div class="mt-4 mb-5 text-center" *ngFor="let post of myPosts">
+    <div class="mt-5 mb-5 text-center" *ngFor="let post of myPosts">
       <img src="{{post.imageUrl}}" alt="..." class="img-thumbnail post-card-image row m-auto">
+      <span class="likes">{{post.likes}} users added this to their wishlist</span>
       <h4 class="row  destination-h float-right">{{post.destination}}</h4>
     </div>
   </div>

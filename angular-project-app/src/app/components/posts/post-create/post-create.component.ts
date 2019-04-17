@@ -18,22 +18,22 @@ export class PostCreateComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      destination:['',[Validators.required, Validators.maxLength(15)]],
+      destination:['',[Validators.required,Validators.minLength(3), Validators.maxLength(15)]],
       imageUrl:['',[Validators.required, Validators.pattern(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/)]],
       creator: [localStorage.getItem('userId')]
     })
   }
 
   createPost(){
-    try{
     this.postService.createPost(this.form.value)
     .subscribe((data)=>{
       console.log(data)
       this.router.navigate(['post/all'])
     })
-  }catch(err){
-    console.log(err)
   }
+
+  get f(){
+    return this.form.controls
   }
 
 }

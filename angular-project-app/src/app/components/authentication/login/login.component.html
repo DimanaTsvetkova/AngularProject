@@ -4,8 +4,14 @@
       <form [formGroup]="form" (submit)="login()">
         <h1 class="login-h">Login</h1>
         <input  class="login" type="text"  placeholder="Username" name="username" formControlName="username"/>
+        <small *ngIf="f.username.errors?.required && f.username.touched"  class="form-text text-danger validate-txt">This field is required!</small>
+        <small *ngIf="f.username.errors?.maxlength || f.username.errors?.minlength"  class="form-text text-danger validate-txt">The username should be between 3 and 15 characters</small>
+        
         <input class="login" type="password" placeholder="******" name="password" formControlName="password" />
-        <input class="login-btn btn btn-dark" type="submit" value="Login" />
+        <small *ngIf="f.password.errors?.required && f.password.touched" class="form-text text-danger validate-txt">This field is required!</small>
+        <small *ngIf="f.password.errors?.minlength" class="form-text text-danger validate-txt">The password should be atleast 4 characters</small>
+
+        <input class="login-btn btn btn-dark" type="submit"  [disabled]="form.invalid" value="Login" />
       </form>
     </div>
   </div>

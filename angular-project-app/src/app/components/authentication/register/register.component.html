@@ -4,16 +4,16 @@
       <form [formGroup]="form" (submit)="register()">
         <h1 class="login-h">Register</h1>
         <input class="login" type="text" placeholder="Username" name="username"  formControlName="username" />
-        <small *ngIf="f.username.errors?.required && f.username.touched"  class="form-text text-danger validate-txt">This field is rerquired!</small>
+        <small *ngIf="f.username.errors?.required && f.username.touched"  class="form-text text-danger validate-txt">This field is required!</small>
         <small *ngIf="f.username.errors?.maxlength || f.username.errors?.minlength"  class="form-text text-danger validate-txt">The username must be between 3 and 15 characters!</small>
         
         <input class="login" type="url"  placeholder="Profile picture" name="imageUrl"  formControlName="imageUrl"/>
-        <small *ngIf="f.imageUrl.errors?.required && f.url.touched" class="form-text text-danger validate-txt">This field is rerquired!</small>
+        <small *ngIf="f.imageUrl.errors?.required && f.url.touched" class="form-text text-danger validate-txt">This field is required!</small>
         <small *ngIf="f.imageUrl.errors?.pattern" class="form-text text-danger validate-txt">Please enter a valid url!</small>
 
 
         <input class="login" type="password" name="password" placeholder="******" name="password" formControlName="password"/>
-        <small *ngIf="f.password.errors?.required && f.password.touched" class="form-text text-danger validate-txt">This field is rerquired!</small>
+        <small *ngIf="f.password.errors?.required && f.password.touched" class="form-text text-danger validate-txt">This field is required!</small>
         <small *ngIf="f.password.errors?.minlength" class="form-text text-danger validate-txt">The password must be atleast 4 characters!</small>
 
         <input class=" btn btn-dark login-btn" type="submit" [disabled]="form.invalid" value="Register">

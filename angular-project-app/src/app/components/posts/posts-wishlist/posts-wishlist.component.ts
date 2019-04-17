@@ -10,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostsWishlistComponent implements OnInit {
   wishlist:Array<Post>;
+  username: string;
   constructor(
     private postService: PostServiceService,
     private route: ActivatedRoute
     ) { }
 
   ngOnInit() {
-
+     this.username = localStorage.getItem('username')
       this.postService.getWishlist()
       .subscribe(data=>{
        

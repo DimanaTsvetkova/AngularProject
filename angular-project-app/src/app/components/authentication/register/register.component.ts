@@ -22,12 +22,9 @@ export class RegisterComponent implements OnInit {
       imageUrl: [''],
       password:['',[Validators.required, Validators.minLength(4)]]
     })
-
-    console.log(this.f.username)
   }
   
   register(){
-    console.log('here')
     this.authService.register(this.form.value)
     .subscribe((data)=>{
       console.log(data)

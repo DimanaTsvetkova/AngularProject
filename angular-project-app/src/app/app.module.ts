@@ -12,10 +12,8 @@ import { PostCreateComponent } from './components/posts/post-create/post-create.
 import { PostServiceService } from './core/services/post-service.service';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
-import { from } from 'rxjs';
 import { PostsMineComponent } from './components/posts/posts-mine/posts-mine.component';
 import { PostsWishlistComponent } from './components/posts/posts-wishlist/posts-wishlist.component';
-import { AuthGuard } from './core/guards/auth.guard';
 import { PostInfoComponent } from './components/posts/post-info/post-info.component';
 
 @NgModule({
@@ -29,8 +27,6 @@ import { PostInfoComponent } from './components/posts/post-info/post-info.compon
     PostsMineComponent,
     PostsWishlistComponent,
     PostInfoComponent,
-    // AuthGuard
-
   ],
   imports: [
     BrowserModule,
@@ -39,11 +35,9 @@ import { PostInfoComponent } from './components/posts/post-info/post-info.compon
     AppRoutingModule,
     AppRoutingModule,
     HttpClientModule,
-    // AuthGuard
   ],
   providers: [
     AuthService,
-    // AuthGuard,
     PostServiceService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi : true}
   ],

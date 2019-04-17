@@ -2,10 +2,17 @@
   <div class="container-create">
     <form [formGroup]="form" (submit)="createPost()">
       <h1 class="create-h">Share destination</h1>
-      <input class="login" type="text"placeholder="Destination" name="destination" formControlName="destination" />
-      <input class="login" type="url"  placeholder="Picture" name="imageUrl" formControlName="imageUrl" />
+      <input class="login" type="text" placeholder="Destination" name="destination" formControlName="destination" />
+      <small *ngIf="f.destination.errors?.required && f.destination.touched" class="form-text text-danger validate-txt">This
+        field is required!</small>
+      <small *ngIf="f.destination.errors?.maxlength || f.destination.errors?.minlength"
+        class="form-text text-danger validate-txt">The destination must be between 3 and 15 characters!</small>
 
-      <button class=" btn btn-dark login-btn share-btn" type="submit" value="Login"> Share</button>
+      <input class="login" type="url" placeholder="Picture URL" name="imageUrl" formControlName="imageUrl" />
+      <small *ngIf="f.imageUrl.errors?.required && f.imageUrl.touched"  class="form-text text-danger validate-txt">This field is required!</small>
+      <small *ngIf="f.imageUrl.errors?.pattern"  class="form-text text-danger validate-txt">Please enter a valid url</small>
+      
+      <button class=" btn btn-dark mb-3 share-btn" type="submit"  [disabled]="form.invalid" value="Login"> Share</button>
     </form>
   </div>
 </div>
