@@ -9,7 +9,7 @@ import { Post } from 'src/app/core/models/Post';
 export class PostInfoComponent {
   @Input() post: Post;
   @Input() isAdmin: boolean;
-  @Input() isInWishlist: boolean;
+  @Output() isInWishlist = new EventEmitter();
   @Output() onAddToWhishlist = new EventEmitter<string>();
   @Output() onDelete = new EventEmitter<string>();
 
@@ -19,4 +19,7 @@ export class PostInfoComponent {
   deletePost(id:string){
     this.onDelete.emit(id);
   }
+
+ 
+
 }

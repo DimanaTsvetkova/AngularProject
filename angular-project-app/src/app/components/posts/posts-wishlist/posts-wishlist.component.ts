@@ -25,4 +25,6 @@ export class PostsWishlistComponent implements OnInit {
         this.wishlist = data['user']['wishlist']
       })
   }
+
+ 
 }

@@ -12,8 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PostsAllComponent implements OnInit {
   allPosts$: Observable<Array<Post>>
-  currentWishlist: Array<Post>
-  hideButton: boolean;
+  currentWishlist: Array<Post>;
   isAdmin: boolean;
 
 
@@ -38,7 +37,7 @@ export class PostsAllComponent implements OnInit {
       .subscribe(data => {
         this.currentWishlist = data['user']['wishlist'];
         
-        let finalWishlist = this.currentWishlist.map((el) => {
+          let finalWishlist = this.currentWishlist.map((el) => {
           return el._id.toString()
         })
 

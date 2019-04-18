@@ -4,6 +4,7 @@ import { Post } from '../models/Post';
 import { Observable, Subject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +37,7 @@ export class PostServiceService {
     return this.http.get(this.postsUrl + `/wishlist/${userId}` );
 
   }
+
 
   deletePost(postId){
     return this.http.delete(this.postsUrl + `/all/${postId}`);
