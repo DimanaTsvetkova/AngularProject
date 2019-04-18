@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Post } from 'src/app/core/models/post';
 import { PostServiceService } from 'src/app/core/services/post-service.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-posts-all',
   templateUrl: './posts-all.component.html',
   styleUrls: ['./posts-all.component.css']
 })
-export class PostsAllComponent implements OnInit {
+export class PostsAllComponent implements OnInit, OnDestroy {
   allPosts$: Observable<Array<Post>>
   currentWishlist: Array<Post>;
   isAdmin: boolean;
-
+  subscription: Subscription[];
 
   constructor(
     private route: Router,
@@ -33,7 +33,7 @@ export class PostsAllComponent implements OnInit {
       return this.route.navigate(['login']);
     }
     
-    this.postService.getWishlist()
+  this.subscription.push(this.postService.getWishlist()
       .subscribe(data => {
         this.currentWishlist = data['user']['wishlist'];
         
@@ -52,14 +52,24 @@ export class PostsAllComponent implements OnInit {
               console.log(data)
             })
         }
-      })
+      }))
   }
 
 
   deletePost(postId:string){
-    this.postService.deletePost(postId).subscribe((data)=>{
+  this.subscription.push(  this.postService.deletePost(postId).subscribe((data)=>{
       console.log(data)
+    }))
+  }
+
+  ngOnDestroy(){
+    if(this.subscription){
+    this.subscription.forEach(subscr =>{
+      if(subscr){
+        subscr.unsubscribe()
+      }
     })
+  }
   }
 
 

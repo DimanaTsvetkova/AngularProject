@@ -12,7 +12,7 @@
       <small *ngIf="f.imageUrl.errors?.required && f.imageUrl.touched"  class="form-text text-danger validate-txt">This field is required!</small>
       <small *ngIf="f.imageUrl.errors?.pattern"  class="form-text text-danger validate-txt">Please enter a valid url</small>
       
-      <button class=" btn btn-dark mb-3 share-btn" type="submit"  [disabled]="form.invalid" value="Login"> Share</button>
+      <button class=" btn btn-dark mb-3 font-weight-bold share-btn" type="submit"  [disabled]="form.invalid" value="Login"> Share</button>
     </form>
   </div>
 </div>

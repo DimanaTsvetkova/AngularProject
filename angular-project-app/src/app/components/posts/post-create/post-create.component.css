@@ -1,16 +1,17 @@
 .container-create{
-    width: 30%;
-    background: rgba(0, 0, 0, -1);
-    position: absolute;
-    overflow: hidden;
-    top: 50%;
-    left: 25%;
-    margin-left: 7%;
-    margin-top: -10%;
-    border-radius: 25px;
-    text-shadow: 5px 2px 9px #000000;
-    box-shadow: 10px 10px 34px 0px rgba(0,0,0,0.75);
-  
+  width: 50%;
+  margin: 5em auto;
+  background: rgba(0, 0, 0, -1);
+  /* position: absolute; */
+  overflow: hidden;
+  /* top: 50%; */
+  /* left: 25%; */
+  /* margin-left: 7%; */
+  /* margin-top: -10%; */
+  border-radius: 25px;
+  text-shadow: 5px 2px 9px #000000;
+  box-shadow: 10px 10px 34px 0px rgba(0,0,0,0.75);
+
   }
   .container-create>form{
     text-align: center;
@@ -27,13 +28,15 @@
     padding: 1em 0 0;
   }
   
-  .create-post-page{
-    height: 100%;
-    background: #000000;
-  }
+  /* .create-post-page{ */
+    /* height: 100%;
+  } */
   .share-btn:hover{
     box-shadow: none;
     
+  }
+  .share-btn:disabled{
+    cursor: not-allowed
   }
 
   .login{
@@ -58,4 +61,12 @@
     padding: 0 1em;
     margin: 1em auto;
 
+  }
+
+  @media (max-width: 800px) {
+    .container-create{
+      width:90%;
+      margin: 5em auto;
+    
+      }
   }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PostServiceService } from 'src/app/core/services/post-service.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-export class PostCreateComponent implements OnInit {
-  form 
+export class PostCreateComponent implements OnInit, OnDestroy {
+  form;
+  subscription : Subscription;
+
   constructor(
     private fb: FormBuilder,
     private postService: PostServiceService,
@@ -25,7 +28,7 @@ export class PostCreateComponent implements OnInit {
   }
 
   createPost(){
-    this.postService.createPost(this.form.value)
+    this.subscription = this.postService.createPost(this.form.value)
     .subscribe((data)=>{
       console.log(data)
       this.router.navigate(['post/all'])
@@ -34,6 +37,12 @@ export class PostCreateComponent implements OnInit {
 
   get f(){
     return this.form.controls
+  }
+
+  ngOnDestroy(){
+    if(this.subscription){
+      this.subscription.unsubscribe()
+    }
   }
 
 }

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
-  form
+export class RegisterComponent implements OnInit, OnDestroy {
+  form;
+  subscription: Subscription;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -25,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
   
   register(){
-    this.authService.register(this.form.value)
+   this.subscription = this.authService.register(this.form.value)
     .subscribe((data)=>{
       console.log(data)
       const {imageUrl, userId, username} = data['user'];
@@ -41,4 +43,10 @@ export class RegisterComponent implements OnInit {
     return this.form.controls
   }
 
+  ngOnDestroy(){
+    if(this.subscription){
+
+      this.subscription.unsubscribe();  
+    }
+  }
 }

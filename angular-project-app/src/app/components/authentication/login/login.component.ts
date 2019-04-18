@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  form
+export class LoginComponent implements OnInit, OnDestroy {
+  form;
+  subscription : Subscription;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
     ) { }
 
   ngOnInit() {
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+   
+   try{ this.subscription =
     this.authService
     .login(this.form.value)
     .subscribe((data)=>{
@@ -32,13 +36,23 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('imageUrl', imageUrl)
       localStorage.setItem('userId', userId);
       localStorage.setItem('username', username)
-      
       console.log(data)
+      
       this.router.navigate(['post/all'])
     })
+  }catch(err){
+    console.log(err)
+  }
   }
 
   get f(){
     return this.form.controls
+  }
+
+  ngOnDestroy(){
+    if(this.subscription){
+
+      this.subscription.unsubscribe();
+    }
   }
 }
