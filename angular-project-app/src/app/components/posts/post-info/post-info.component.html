@@ -9,7 +9,7 @@
     <img *ngIf="!isAdmin" src="{{post.creator.imageUrl}}" class="profile-pic-card row m-auto" alt="">
     <!-- <h5 *ngIf="post.likes>0">{{post.likes}} people want to visit this destination</h5> -->
     <div class="btns-div row">
-        <p class="hidden-text">Add to wishlist</p>
+        <p class="hidden-text" >Add to wishlist</p>
       <!-- <button class="place-btn"><i class="fas fa-map-marker"></i></button> -->
       <button *ngIf="!isAdmin" class="airplane-btn"
         (click)="addToWishlist(post._id)"><img src="../../../../assets/images/airplane-btn.svg" class="airplane-img"

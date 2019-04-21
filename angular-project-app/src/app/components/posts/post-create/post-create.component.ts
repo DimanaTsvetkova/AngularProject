@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { PostServiceService } from 'src/app/core/services/post-service.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-post-create',
@@ -16,7 +17,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private postService: PostServiceService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -28,9 +30,12 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   }
 
   createPost(){
+
     this.subscription = this.postService.createPost(this.form.value)
     .subscribe((data)=>{
       console.log(data)
+    this.toastr.success("Post added successfully!")
+
       this.router.navigate(['post/all'])
     })
   }

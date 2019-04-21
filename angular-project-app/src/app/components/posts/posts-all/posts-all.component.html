@@ -4,7 +4,7 @@
     <app-post-info class="col-md-4 col-sm-9 post-card text-center" *ngFor="let post of allPosts$ | async" [post]="post"
      [isAdmin]="isAdmin"
       (onDelete)="deletePost($event)" 
-      (onAddToWhishlist)="addToWishlist($event)"
+      (onAddToWhishlist)="addToWishlist($event)" 
       >
       
     </app-post-info>

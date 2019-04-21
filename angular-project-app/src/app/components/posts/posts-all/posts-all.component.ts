@@ -4,6 +4,7 @@ import { PostServiceService } from 'src/app/core/services/post-service.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Observable, Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-posts-all',
@@ -14,12 +15,14 @@ export class PostsAllComponent implements OnInit, OnDestroy {
   allPosts$: Observable<Array<Post>>
   currentWishlist: Array<Post>;
   isAdmin: boolean;
+
   subscription: Subscription[];
 
   constructor(
     private route: Router,
     private authService: AuthService,
-    private postService: PostServiceService
+    private postService: PostServiceService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -33,7 +36,7 @@ export class PostsAllComponent implements OnInit, OnDestroy {
       return this.route.navigate(['login']);
     }
     
-  this.subscription.push(this.postService.getWishlist()
+  this.postService.getWishlist()
       .subscribe(data => {
         this.currentWishlist = data['user']['wishlist'];
         
@@ -42,22 +45,26 @@ export class PostsAllComponent implements OnInit, OnDestroy {
         })
 
         if (finalWishlist.includes(postId)) {
-          
-          return console.log({message:'You aleready added this destination to your wishlist'})
+          this.toastr.success("Aleready added to wishlist")
+          // return this.message =  "
         } else {
 
           const userId = localStorage.getItem('userId')
+          this.toastr.success("Successfuly added to wishlist")
+
           this.postService.likePost(postId, userId)
             .subscribe(data => {
               console.log(data)
             })
         }
-      }))
+      })
   }
 
-
+ 
   deletePost(postId:string){
-  this.subscription.push(  this.postService.deletePost(postId).subscribe((data)=>{
+    this.toastr.success("Post deleted")
+
+  this.subscription.push(this.postService.deletePost(postId).subscribe((data)=>{
       console.log(data)
     }))
   }

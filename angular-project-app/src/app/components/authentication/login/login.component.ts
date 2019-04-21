@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login(){
    
-   try{ this.subscription =
+   this.subscription =
     this.authService
     .login(this.form.value)
     .subscribe((data)=>{
@@ -36,13 +36,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       localStorage.setItem('imageUrl', imageUrl)
       localStorage.setItem('userId', userId);
       localStorage.setItem('username', username)
-      console.log(data)
+      console.log(data, 'from login')
       
       this.router.navigate(['post/all'])
     })
-  }catch(err){
-    console.log(err)
-  }
+  
   }
 
   get f(){
